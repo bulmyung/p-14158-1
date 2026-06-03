@@ -1,7 +1,6 @@
 package com.back.global.initData;
 
 import com.back.domain.post.post.entity.Post;
-import com.back.domain.post.post.repository.PostRepository;
 import com.back.domain.post.post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
@@ -12,8 +11,12 @@ import java.util.Optional;
 
 @Configuration
 public class BaseInitData {
-    @Autowired
     private PostService postService;
+
+    @Autowired
+    public BaseInitData(PostService postService) {
+        this.postService = postService;
+    }
 
     @Bean
     ApplicationRunner baseInitDataApplicationRunner() {
